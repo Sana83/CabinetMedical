@@ -10,7 +10,7 @@ namespace CabinetMedical.ClassesMetier
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-    using Soins2021.Exceptions;
+    using CabinetMedical.Exceptions;
 
     /// <summary>
     /// Internal classe dossier.

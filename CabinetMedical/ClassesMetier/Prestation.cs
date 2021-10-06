@@ -9,7 +9,7 @@ namespace CabinetMedical.ClassesMetier
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Soins2021.Exceptions;
+    using CabinetMedical.Exceptions;
 
     /// <summary>
     /// Classe prestation.

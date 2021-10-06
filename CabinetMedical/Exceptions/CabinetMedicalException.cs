@@ -10,7 +10,7 @@ namespace CabinetMedical.Exceptions
     using System.IO;
     using System.Linq;
     using System.Text;
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     /// <summary>
     /// Classe soin exception.
@@ -63,9 +63,10 @@ namespace CabinetMedical.Exceptions
         /// Créer une méthode GetExceptionJson qui renvoie un objet de la classe tempException sérialisé au format Json indenté.
         /// </summary>
         /// <returns> un objet de la classe tempException sérialisé au format Json indenté.</returns>
-        public override string GetExceptionJson()
+        public string GetExceptionJson()
         {
-
+            var GetExceptionJson = new JsonSerializer;
+            return Console.WriteLine(GetExceptionJson);
         }
     }
 }

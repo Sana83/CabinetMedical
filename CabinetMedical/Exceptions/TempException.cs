@@ -9,6 +9,7 @@ namespace CabinetMedical.Exceptions
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Text.Json;
 
     /// <summary>
     /// Classe tempException.
@@ -69,5 +70,15 @@ namespace CabinetMedical.Exceptions
         /// Gets or Sets UserMachine.
         /// </summary>
         public string UserMachine { get => this.userMachine; set => this.userMachine = value; }
+    }
+    
+    /// <summary>
+    /// Créer une méthode GetExceptionJson qui renvoie un objet de la classe tempException sérialisé au format Json indenté.
+    /// </summary>
+    /// <returns> un objet de la classe tempException sérialisé au format Json indenté.</returns>
+    public string GetExceptionJson()
+    {
+        var GetExceptionJson = new JsonSerializer this.UserMachine
+        return Console.WriteLine(GetExceptionJson);
     }
 }
