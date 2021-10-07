@@ -1,4 +1,4 @@
-﻿// <copyright file="SoinException.cs" company="PlaceholderCompany">
+﻿// <copyright file="CabinetMedicalException.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -15,7 +15,7 @@ namespace CabinetMedical.Exceptions
     /// <summary>
     /// Classe soin exception.
     /// </summary>
-    internal class CabinetMedicalException : Exception
+    public class CabinetMedicalException : Exception
     {
         private string message;
         private static string jsonLog;
@@ -27,9 +27,10 @@ namespace CabinetMedical.Exceptions
         public string Message1 { get => this.message; set => this.message = value; }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CabinetMedicalException"/> class.
         /// Gets or sets listex.
         /// </summary>
-        public static List<Dictionary<string, string>> ListEx { get => listEx; set => listEx = value; }
+        // static List<Dictionary<string, string>> ListEx { get => listEx; set => listEx = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CabinetMedicalException"/> class.
@@ -38,35 +39,42 @@ namespace CabinetMedical.Exceptions
         public CabinetMedicalException(string message)
             : base(message)
         {
-            var log = new Dictionary<string, string>
-            {
-                { "Soins2021", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString() },
-                { "ClasseException", this.GetType().Name.ToString() },
-                { "DateException", DateTime.Now.ToString() },
-                { "MessageException", this.Message },
-                { "UserException", Environment.UserName },
-                { "UserMachine", Environment.MachineName },
-            };
+            ////var log = new Dictionary<string, string>
+            ////{
+            ////    { "Soins2021", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name.ToString() },
+            ////    { "ClasseException", this.GetType().Name.ToString() },
+            ////    { "DateException", DateTime.Now.ToString() },
+            ////    { "MessageException", this.Message },
+            ////    { "UserException", Environment.UserName },
+            ////    { "UserMachine", Environment.MachineName },
+            ////};
 
-            // TempException log = new TempException("SoinException", message, Environment.UserName.ToString(), Environment.MachineName.ToString());
+            TempException log = new TempException("SoinException", message, Environment.UserName.ToString(), Environment.MachineName.ToString());
+            var options = new JsonSerializerOptions { WriteIndented = true };
 
-            // SoinException.jsonLog = JsonConvert.SerializeObject(log,Formatting.Indented);
+            // return Console.WriteLine(GetExceptionJson);
+            string jsonLog = JsonSerializer.Serialize(log, options);
 
             // evo filestream
-            listEx.Add(log);
+            // .Add(log);
+            string filePath = @"E:\cours BTS SIO 2\Bloc 2 Mr Roche\ExceptionData.json";
+            List<TempException> lesExceptionsContenuesDansLeFichier = JsonSerializer.Deserialize<List<TempException>>(filePath);
+            lesExceptionsContenuesDansLeFichier.Add(log);
+            string logs = JsonSerializer.Serialize(lesExceptionsContenuesDansLeFichier, options);
+            File.WriteAllText(filePath, logs);
 
-            // string filePath = @"E:\Roche\TP C# 2a\Soins2021\Soins2021\ExceptionData.json";
             // File.AppendAllText(filePath, jsonLog);
+            // File.
         }
 
         /// <summary>
         /// Créer une méthode GetExceptionJson qui renvoie un objet de la classe tempException sérialisé au format Json indenté.
         /// </summary>
         /// <returns> un objet de la classe tempException sérialisé au format Json indenté.</returns>
-        public string GetExceptionJson()
-        {
-            var GetExceptionJson = new JsonSerializer;
-            return Console.WriteLine(GetExceptionJson);
-        }
+        // public string GetExceptionJson()
+        // {
+        //    var GetExceptionJson = new JsonSerializer;
+        //    return Console.WriteLine(GetExceptionJson);
+        // }
     }
 }

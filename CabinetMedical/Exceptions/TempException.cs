@@ -8,8 +8,8 @@ namespace CabinetMedical.Exceptions
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
     using System.Text.Json;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Classe tempException.
@@ -52,11 +52,6 @@ namespace CabinetMedical.Exceptions
         public string ClasseException { get => this.classeException; set => this.classeException = value; }
 
         /// <summary>
-        /// Gets or Sets DateException.
-        /// </summary>
-        public DateTime DateException { get => this.dateException; set => this.dateException = value; }
-
-        /// <summary>
         /// Gets or Sets MessageException.
         /// </summary>
         public string MessageException { get => this.messageException; set => this.messageException = value; }
@@ -70,15 +65,21 @@ namespace CabinetMedical.Exceptions
         /// Gets or Sets UserMachine.
         /// </summary>
         public string UserMachine { get => this.userMachine; set => this.userMachine = value; }
-    }
-    
-    /// <summary>
-    /// Créer une méthode GetExceptionJson qui renvoie un objet de la classe tempException sérialisé au format Json indenté.
-    /// </summary>
-    /// <returns> un objet de la classe tempException sérialisé au format Json indenté.</returns>
-    public string GetExceptionJson()
-    {
-        var GetExceptionJson = new JsonSerializer this.UserMachine
-        return Console.WriteLine(GetExceptionJson);
+
+        /// <summary>
+        /// Gets or Sets DateException.
+        /// </summary>
+        public DateTime DateException { get => this.dateException; set => this.dateException = value; }
+
+        /// <summary>
+        /// Créer une méthode GetExceptionJson qui renvoie un objet de la classe tempException sérialisé au format Json indenté.
+        /// </summary>
+        /// <returns> un objet de la classe tempException sérialisé au format Json indenté.</returns>
+        // public string GetExceptionJson()
+        // {
+        //    var options = new JsonSerializerOptions { WriteIndented = true };
+        //    //return Console.WriteLine(GetExceptionJson);
+        //    return JsonSerializer.Serialize(this, options);
+        // }
     }
 }
