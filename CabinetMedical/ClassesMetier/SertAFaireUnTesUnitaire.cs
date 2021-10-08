@@ -11,7 +11,7 @@ namespace CabinetMedical.ClassesMetier
     /// <summary>
     /// Classe SertAFaireUnTesUnitaire.
     /// </summary>
-    internal class SertAFaireUnTesUnitaire
+    public class SertAFaireUnTesUnitaire
     {
         /// <summary>
         /// Effectue la somme de deux nombres entiers.

@@ -57,11 +57,11 @@ namespace CabinetMedical.Exceptions
 
             // evo filestream
             // .Add(log);
-            string filePath = @"E:\cours BTS SIO 2\Bloc 2 Mr Roche\ExceptionData.json";
+            string filePath = File.ReadAllText(@"E:\cours BTS SIO 2\Bloc 2 Mr Roche\ExceptionData.json");
             List<TempException> lesExceptionsContenuesDansLeFichier = JsonSerializer.Deserialize<List<TempException>>(filePath);
             lesExceptionsContenuesDansLeFichier.Add(log);
             string logs = JsonSerializer.Serialize(lesExceptionsContenuesDansLeFichier, options);
-            File.WriteAllText(filePath, logs);
+            File.WriteAllText(filePath, logs, System.Text.Encoding.UTF8);
 
             // File.AppendAllText(filePath, jsonLog);
             // File.
