@@ -15,7 +15,7 @@ namespace CabinetMedical.ClassesMetier
     /// <summary>
     /// Internal classe dossier.
     /// </summary>
-    internal class Dossier
+    public class Dossier
     {
         #region attributs privés
         private string nom;

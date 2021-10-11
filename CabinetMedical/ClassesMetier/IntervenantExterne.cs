@@ -13,7 +13,7 @@ namespace CabinetMedical.ClassesMetier
     /// <summary>
     /// Classe intervenant externe.
     /// </summary>
-    internal class IntervenantExterne : Intervenant
+    public class IntervenantExterne : Intervenant
     {
         // Attributs
         private string specialite;

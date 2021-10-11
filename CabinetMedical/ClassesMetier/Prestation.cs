@@ -14,7 +14,7 @@ namespace CabinetMedical.ClassesMetier
     /// <summary>
     /// Classe prestation.
     /// </summary>
-    internal class Prestation
+    public class Prestation
     {
         // Attibuts
         private string libelle;
