@@ -6,6 +6,7 @@ using CabinetMedical.ClassesMetier;
 
 namespace TestCabinetMedical
 {
+    [TestClass]
     public class DossierTests
     {
         [TestMethod]
@@ -15,6 +16,12 @@ namespace TestCabinetMedical
             intervenant.AjoutePrestation(new Prestation("Presta 10", new DateTime(2019, 6, 12), intervenant));
             intervenant.AjoutePrestation(new Prestation("Presta 11", new DateTime(2019, 6, 15), intervenant));
             Assert.AreEqual(2, intervenant.GetNbPrestations());
+        }
+        
+        [TestMethod]
+        public void TestDateCreationOK()
+        {
+            Dossier dossier = new Dossier("dupont", "Jean", new DateTime(1990, 11, 12), new DateTime(2019, 3, 31));
         }
     }
 }
