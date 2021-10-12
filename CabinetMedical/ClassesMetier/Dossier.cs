@@ -17,13 +17,11 @@ namespace CabinetMedical.ClassesMetier
     /// </summary>
     public class Dossier
     {
-        #region attributs privés
         private string nom;
         private string prenom;
         private DateTime dateNaissance;
         private List<Prestation> prestations;
         private DateTime dateCreation;
-        #endregion
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dossier"/> class.
