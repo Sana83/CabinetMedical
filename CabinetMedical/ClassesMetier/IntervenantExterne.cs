@@ -11,58 +11,49 @@ namespace CabinetMedical.ClassesMetier
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Classe intervenant externe.
+    /// Classe IntervenantExterne.
     /// </summary>
     public class IntervenantExterne : Intervenant
     {
-        // Attributs
-        private string specialite;
-        private string adresse;
-        private string tel;
-
         // Méthodes
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntervenantExterne"/> class.
-        /// Constructeur.
         /// </summary>
         /// <param name="nom">Nom.</param>
         /// <param name="prenom">Prenom.</param>
-        /// <param name="specialite">specialite.</param>
-        /// <param name="adresse">adresse.</param>
-        /// <param name="tel">rel.</param>
+        /// <param name="specialite">Spécialité.</param>
+        /// <param name="adresse">Adresse.</param>
+        /// <param name="tel">Téléphone.</param>
         public IntervenantExterne(string nom, string prenom, string specialite, string adresse, string tel)
             : base(nom, prenom)
         {
-            this.specialite = specialite;
-            this.adresse = adresse;
-            this.tel = tel;
+            this.Specialite = specialite;
+            this.Adresse = adresse;
+            this.Tel = tel;
         }
 
         // Properties
 
         /// <summary>
-        /// Gets specialite.
+        /// Gets.
         /// </summary>
-        public string Specialite { get => this.specialite; }
+        public string Specialite { get; }
 
         /// <summary>
-        /// Gets or sets adresse.
+        /// Gets or Sets.
         /// </summary>
-        public string Adresse { get => this.adresse; set => this.adresse = value; }
+        public string Adresse { get; set; }
 
         /// <summary>
-        /// Gets or sets tel.
+        /// Gets or Sets.
         /// </summary>
-        public string Tel { get => this.tel; set => this.tel = value; }
+        public string Tel { get; set; }
 
-        /// <summary>
-        /// Methode affichage.
-        /// </summary>
-        /// <returns>pharse de specialite.</returns>
+        /// <inheritdoc/>
         public override string ToString()
         {
-            return base.ToString() + " Spécialité : " + this.specialite + " - " + this.adresse + " - " + this.tel;
+            return base.ToString() + " Spécialité : " + this.Specialite + " - " + this.Adresse + " - " + this.Tel;
         }
     }
 }

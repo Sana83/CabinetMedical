@@ -5,80 +5,68 @@
 namespace CabinetMedical.ClassesMetier
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using CabinetMedical.Exceptions;
 
     /// <summary>
-    /// Classe prestation.
+    /// Classe Prestation.
     /// </summary>
     public class Prestation
     {
-        // Attibuts
-        private string libelle;
-        private DateTime dateHeureSoin;
-        private Intervenant intervenant;
-
         // Méthodes
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Prestation"/> class.
         /// </summary>
-        /// <param name="libelle">Libelle.</param>
-        /// <param name="dateHeureSoin">dateheuresoin.</param>
-        /// <param name="intervenant">intervenant.</param>
+        /// <param name="libelle">Libéllé.</param>
+        /// <param name="dateHeureSoin">Date et heure de la prestation.</param>
+        /// <param name="intervenant">Objet de la classe Intervenant.</param>
         public Prestation(string libelle, DateTime dateHeureSoin, Intervenant intervenant)
         {
-            this.libelle = libelle;
+            this.Libelle = libelle;
             if (DateTime.Compare(DateTime.Now.Date, dateHeureSoin.Date) >= 0)
             {
-                this.dateHeureSoin = dateHeureSoin;
+                this.DateHeureSoin = dateHeureSoin;
             }
             else
             {
-                throw new CabinetMedicalException("Date non conforme");
+                throw new CabinetMedicalException(" Date non conforme ");
             }
 
-            this.intervenant = intervenant;
+            this.Intervenant = intervenant;
         }
 
         // Properties
 
         /// <summary>
-        /// gets libelle.
+        /// Gets.
         /// </summary>
-        public string Libelle { get => this.libelle; }
+        public string Libelle { get; }
 
         /// <summary>
-        /// Gets dateheuresoins.
+        /// Gets.
         /// </summary>
-        public DateTime DateHeureSoin { get => this.dateHeureSoin; }
+        public DateTime DateHeureSoin { get; }
 
         /// <summary>
-        /// Gets intervenant.
+        /// Gets.
         /// </summary>
-        internal Intervenant Intervenant { get => this.intervenant; }
+        internal Intervenant Intervenant { get; }
 
         /// <summary>
-        /// methode affichage.
+        /// Permet de comparer deux date de prestation.
         /// </summary>
-        /// <returns>texte avec libelle, dateheuresoin, intervenant.</returns>
-        public override string ToString()
-        {
-            return "Libelle " + this.libelle + " - " + this.dateHeureSoin + " - " + this.intervenant + "\n\t";
-        }
-
-        /// <summary>
-        /// methode qui compare deux valeur.
-        /// </summary>
-        /// <param name="presta1">première prestation.</param>
-        /// <param name="presta2">deuxieme prestation.</param>
-        /// <returns>une Date/heure?.</returns>
+        /// <param name="presta1">Objet de la classe Prestation.</param>
+        /// <param name="presta2">Un autre objet de la classe Prestation.</param>
+        /// <returns>Un nombre permettant de savoir si la date est antérieure ou non.</returns>
         public static int CompareTo(Prestation presta1, Prestation presta2)
         {
-            return DateTime.Compare(presta1.dateHeureSoin.Date, presta2.dateHeureSoin.Date);
+            return DateTime.Compare(presta1.DateHeureSoin.Date, presta2.DateHeureSoin.Date);
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return "Libelle " + this.Libelle + " - " + this.DateHeureSoin + " - " + this.Intervenant + "\n\t";
         }
     }
 }

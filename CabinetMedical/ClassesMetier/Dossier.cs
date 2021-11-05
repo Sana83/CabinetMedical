@@ -7,33 +7,28 @@ namespace CabinetMedical.ClassesMetier
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using CabinetMedical.Exceptions;
 
     /// <summary>
-    /// Internal classe dossier.
+    /// Classe Dossier.
     /// </summary>
     public class Dossier
     {
-        private string nom;
-        private string prenom;
         private DateTime dateNaissance;
         private List<Prestation> prestations;
-        private DateTime dateCreation;
+
+        // Méthodes
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dossier"/> class.
-        /// Methodes.
         /// </summary>
-        /// <param name="nom">Nom.</param>
-        /// <param name="prenom">Prenom.</param>
-        /// <param name="dateNaissance">Date de naissance.</param>
+        /// <param name="nom">Nom de la personne.</param>
+        /// <param name="prenom">Prenom de la personne.</param>
+        /// <param name="dateNaissance">Date de naissance de la personne.</param>
         public Dossier(string nom, string prenom, DateTime dateNaissance)
         {
-            this.nom = nom;
-            this.prenom = prenom;
+            this.Nom = nom;
+            this.Prenom = prenom;
             if (DateTime.Compare(DateTime.Now.Date, dateNaissance) >= 0)
             {
                 this.dateNaissance = dateNaissance;
@@ -43,7 +38,7 @@ namespace CabinetMedical.ClassesMetier
                 throw new CabinetMedicalException("Date non conforme");
             }
 
-            this.dateCreation = DateTime.Now;
+            this.DateCreation = DateTime.Now;
 
             // this.dateCreation = new DateTime(2015, 10, 8, 12, 00, 00);
             this.prestations = new List<Prestation>();
@@ -52,16 +47,16 @@ namespace CabinetMedical.ClassesMetier
         /// <summary>
         /// Initializes a new instance of the <see cref="Dossier"/> class.
         /// </summary>
-        /// <param name="nom">Nom.</param>
-        /// <param name="prenom">Prenom.</param>
-        /// <param name="dateNaissance">Date de naissance.</param>
-        /// <param name="dateCreation">Date de creation.</param>
+        /// <param name="nom">Nom de la personne.</param>
+        /// <param name="prenom">Prenom de la personne.</param>
+        /// <param name="dateNaissance">Date de naissance de la personne.</param>
+        /// <param name="dateCreation">Date de création de la personne.</param>
         public Dossier(string nom, string prenom, DateTime dateNaissance, DateTime dateCreation)
             : this(nom, prenom, dateNaissance)
         {
             if (DateTime.Compare(DateTime.Now.Date, dateCreation) >= 0)
             {
-                this.dateCreation = dateCreation;
+                this.DateCreation = dateCreation;
             }
             else
             {
@@ -72,10 +67,10 @@ namespace CabinetMedical.ClassesMetier
         /// <summary>
         /// Initializes a new instance of the <see cref="Dossier"/> class.
         /// </summary>
-        /// <param name="nom">Nom.</param>
-        /// <param name="prenom">Prenom.</param>
-        /// <param name="dateNaissance">Date de naissance.</param>
-        /// <param name="prestation">Prestation.</param>
+        /// <param name="nom">Nom de la personne.</param>
+        /// <param name="prenom">Prenom de la personne.</param>
+        /// <param name="dateNaissance">Date de naissance de la personne.</param>
+        /// <param name="prestation">Objet de la classe Prestation.</param>
         public Dossier(string nom, string prenom, DateTime dateNaissance, Prestation prestation)
             : this(nom, prenom, dateNaissance)
         {
@@ -85,10 +80,24 @@ namespace CabinetMedical.ClassesMetier
         /// <summary>
         /// Initializes a new instance of the <see cref="Dossier"/> class.
         /// </summary>
-        /// <param name="nom">Nom.</param>
-        /// <param name="prenom">Prenom.</param>
-        /// <param name="dateNaissance">Date de naissance.</param>
-        /// <param name="prestations">Prestation.</param>
+        /// <param name="nom">Nom de la personne.</param>
+        /// <param name="prenom">Prenom de la personne.</param>
+        /// <param name="dateNaissance">Date de naissance de la personne.</param>
+        /// <param name="dateCreation">Date de creation du dossier.</param>
+        /// <param name="prestation">Objet de la classe Prestation.</param>
+        public Dossier(string nom, string prenom, DateTime dateNaissance, DateTime dateCreation, Prestation prestation)
+            : this(nom, prenom, dateNaissance, dateCreation)
+        {
+            this.AjoutePrestation(prestation);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dossier"/> class.
+        /// </summary>
+        /// <param name="nom">Nom de la personne.</param>
+        /// <param name="prenom">Prenom de la personne.</param>
+        /// <param name="dateNaissance">Date de naissance de la personne.</param>
+        /// <param name="prestations">Objet de la classe Prestation.</param>
         public Dossier(string nom, string prenom, DateTime dateNaissance, List<Prestation> prestations)
             : this(nom, prenom, dateNaissance)
         {
@@ -101,49 +110,46 @@ namespace CabinetMedical.ClassesMetier
         // Properties
 
         /// <summary>
-        /// Gets Nom.
+        /// Gets.
         /// </summary>
-        public string Nom { get => this.nom; }
+        public string Nom { get; }
 
         /// <summary>
-        /// Gets prenom.
+        /// Gets.
         /// </summary>
-        public string Prenom { get => this.prenom; }
+        public string Prenom { get; }
 
         /// <summary>
-        /// Gets date de naissance.
+        /// Gets.
         /// </summary>
         public DateTime DateNaissance { get => this.dateNaissance; }
 
         /// <summary>
-        /// Gets prestations.
+        /// Gets.
+        /// </summary>
+        public DateTime DateCreation { get; }
+
+        /// <summary>
+        /// Gets.
         /// </summary>
         internal List<Prestation> Prestations { get => this.prestations; }
 
-        /// <summary>
-        /// Gets date de creation.
-        /// </summary>
-        public DateTime DateCreation { get => this.dateCreation; }
-
-        /// <summary>
-        /// Methode affichage.
-        /// </summary>
-        /// <returns>Le dossier avec les informations.</returns>
+        /// <inheritdoc/>
         public override string ToString()
         {
-            string contenu = " ";
+            string contenu = string.Empty;
             foreach (Prestation presta in this.prestations)
             {
                 contenu += presta;
             }
 
-            return "-------------Début dossier ------------ \n" + "Nom : " + this.nom + " Prenom : " + this.prenom + " Date de naissance : " + this.dateNaissance + "\n\t" + contenu + "\n -------------Fin dossier --------------";
+            return "-------------Début dossier ------------ \n" + "Nom : " + this.Nom + " Prenom : " + this.Prenom + " Date de naissance : " + this.dateNaissance + "\n\t" + contenu + "\n -------------Fin dossier --------------";
         }
 
         /// <summary>
-        /// Methode ajouter une prestation.
+        /// Ajoute une prestation (objet de la classe Prestation) à la liste d'objet prestations de la classe.
         /// </summary>
-        /// <param name="prestation">Prestation.</param>
+        /// <param name="prestation">Objet de la classe Prestation.</param>
         public void AjoutePrestation(Prestation prestation)
         {
             // pour que le test renvoi tru il faut que la date de gauche soit supérieure ou égal
@@ -158,9 +164,9 @@ namespace CabinetMedical.ClassesMetier
         }
 
         /// <summary>
-        /// Methode Nb de prestation.
+        /// Permet d'obtenir le nombre de Prestations effectué par un intervenant externe.
         /// </summary>
-        /// <returns>Nb de prestation.</returns>
+        /// <returns>Un nombre (Int32).</returns>
         public int GetNbPrestationsExternes()
         {
             int cpt = 0;
@@ -176,9 +182,9 @@ namespace CabinetMedical.ClassesMetier
         }
 
         /// <summary>
-        /// Methode qui retourne le nb de prestation.
+        /// Permet d'obtenir le nombre de prestation effectuée par un intervenant.
         /// </summary>
-        /// <returns>Nb de prestation.</returns>
+        /// <returns>Un nombre (Int32).</returns>
         public int GetNbPrestations()
         {
             return this.prestations.Count;
@@ -188,7 +194,7 @@ namespace CabinetMedical.ClassesMetier
         /// Première méthode pour obtenir le nb de jours de prestation.
         /// Méthode double boucle.
         /// </summary>
-        /// <returns> nb jour soins.</returns>
+        /// <returns>Nb jour soins.</returns>
         public int GetNbJoursSoinsV1()
         {
             int nb = this.prestations.Count;
@@ -210,7 +216,7 @@ namespace CabinetMedical.ClassesMetier
         /// Deuxième méthode pour obtenir le nb de jours de prestation.
         /// Ajout dans une liste viste si pas déjà présente.
         /// </summary>
-        /// <returns> nb jour soins.</returns>
+        /// <returns>Nb jour soins.</returns>
         public int GetNbJoursSoinsV2()
         {
             List<DateTime> dates = new List<DateTime>();
@@ -226,9 +232,10 @@ namespace CabinetMedical.ClassesMetier
         }
 
         /// <summary>
-        /// Méthode qui retourne le nb de jours de soins V3.
+        /// Troisième méthode pour obtenir le nb de jours de prestation.
+        /// Ajout dans une liste viste si pas déjà présente.
         /// </summary>
-        /// <returns>Le nb de jour de soins V3.</returns>
+        /// <returns>Nb jour soins.</returns>
         public int GetNbJoursSoinsV3()
         {
             List<Prestation> dateTrie = this.prestations.OrderBy(prest => prest.DateHeureSoin).ToList(); // ordre croissant
@@ -247,11 +254,6 @@ namespace CabinetMedical.ClassesMetier
             }
 
             return cpt + 1;
-        }
-
-        private bool IsDateValide(DateTime date)
-        {
-            return true;
         }
     }
 }

@@ -4,14 +4,10 @@
 
 namespace CabinetMedical.ClassesMetier
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
-    /// Classe intervenant.
+    /// Classe Intervenant.
     /// </summary>
     public class Intervenant
     {
@@ -24,7 +20,6 @@ namespace CabinetMedical.ClassesMetier
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Intervenant"/> class.
-        /// Constructeur.
         /// </summary>
         /// <param name="nom">Nom.</param>
         /// <param name="prenom">Prenom.</param>
@@ -37,37 +32,34 @@ namespace CabinetMedical.ClassesMetier
         // Properties
 
         /// <summary>
-        /// Gets Nom.
+        /// Gets.
         /// </summary>
         public string Nom { get => this.nom; }
 
         /// <summary>
-        /// Gets prenom.
+        /// Gets.
         /// </summary>
         public string Prenom { get => this.prenom; }
 
-        /// <summary>
-        /// Methode affichage.
-        /// </summary>
-        /// <returns>Affiche la pharse intervenant.</returns>
+        /// <inheritdoc/>
         public override string ToString()
         {
             return "Intervenant : " + this.nom + " - " + this.prenom;
         }
 
         /// <summary>
-        /// Mehtode pour ajouter une prestation.
+        /// Permet d'Ajouter une prestation à la liste prestations.
         /// </summary>
-        /// <param name="prestation">prestation.</param>
+        /// <param name="prestation">Objet de la classe Prestation.</param>
         public void AjoutePrestation(Prestation prestation)
         {
             this.prestations.Add(prestation);
         }
 
         /// <summary>
-        /// Methode pour avoir le nb de prestation.
+        /// Permet d'obtenir le nombre de prestation.
         /// </summary>
-        /// <returns>Le nb de prestation.</returns>
+        /// <returns>Nombre de prestation.</returns>
         public int GetNbPrestations()
         {
             return this.prestations.Count;
