@@ -1,7 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Tangui Hoarau</Authors>
+    <Company>Lycée Bonaparte</Company>
+    <Description>TP CabinetMedical qui est de créer, dans une solution Visual Studio 2019, une bibliothèque de classes
+que l'on va placer dans le gestionnaire de packages Nuget et de créer un projet utilisant ce
+package.</Description>
+    <PackageProjectUrl>https://github.com/Sana83/CabinetMedical</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Sana83/CabinetMedical</RepositoryUrl>
+    <PackageId>CabinetMedicalHOARAU</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

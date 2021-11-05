@@ -4,6 +4,26 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
+    <Description>TP CabinetMedical qui est de créer, dans une solution Visual Studio 2019, une bibliothèque de classes
+que l'on va placer dans le gestionnaire de packages Nuget et de créer un projet utilisant ce
+package.</Description>
+
+    <Authors>Tangui Hoarau</Authors>
+
+    <Company>Lycée Bonaparte</Company>
+
+    <PackageProjectUrl>https://github.com/Sana83/CabinetMedical</PackageProjectUrl>
+
+    <RepositoryUrl>https://github.com/Sana83/CabinetMedical</RepositoryUrl>
+
+    <PackageReleaseNotes />
+
+    <PackageId>CabinetMedical</PackageId>
+
+    <Product>CabinetMedical</Product>
   </PropertyGroup>
 
   <ItemGroup>
